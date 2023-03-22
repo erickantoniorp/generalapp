@@ -8,9 +8,21 @@ class HomePage extends GetView<HomeController> {
    
    @override
    Widget build(BuildContext context) {
+    Get.put(HomeController());
        return Scaffold(
            appBar: AppBar(title: const Text('HomePage'),),
-           body: Container(),
+           body: ListView.separated(
+        itemCount: controller.getUserTaskListSize(),
+        itemBuilder: (context, i) => ListTile( 
+          title: Text( controller.getUserTaskListByPos(i) ),
+          trailing: const Icon( Icons.arrow_forward_ios_outlined, color: Colors.indigo, ),
+          onTap: () {
+            final game = controller.getUserTaskListByPos(i);
+            print( game );
+          },
+        ), 
+        separatorBuilder: ( _ , __ ) => const Divider(), 
+      ),
        );
   }
 }

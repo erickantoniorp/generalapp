@@ -5,6 +5,6 @@ import 'package:get/get.dart';
 
 abstract class AppPages {
   static final pages = [GetPage(name: Routes.LOGIN, page: () => LoginPage()),
-  GetPage(name: Routes.HOME, page: () => const HomePage())
+  GetPage(name: Routes.HOME, page: () => HomePage())
   ];
 }

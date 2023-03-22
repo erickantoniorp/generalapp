@@ -17,3 +17,8 @@ void main() {
     home: LoginPage(),
   ));
 }
+
+
+//GetView si la página solo depende de un solo controlador y evita usar el Get.find
+//GetWidget es similar a getview pero se diferencia que da la misma intancia de Get.find siempre. Es muy util
+//cuando se combina con Get.create
