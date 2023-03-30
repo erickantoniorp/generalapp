@@ -17,6 +17,9 @@ class HomePage extends GetView<HomeController> {
                 children: [
                     TextField(
                         onChanged: (value) => controller.filterList(value),
+                        onTap:  () {
+                            controller.chooseDate();
+                        },
                         decoration: const InputDecoration(
                             labelText: 'Seleccione Fecha',
                         ),
@@ -29,17 +32,20 @@ class HomePage extends GetView<HomeController> {
                                 itemBuilder: (context, i) {
                                     return Card(
                                         child: ListTile(
-                                            title: Text(controller.getUserTaskListByPos(i)),
+                                            title: Text(controller.getUserTaskNameByPos(i)),
                                             //subtitle: Text(subtitles[index]),
                                             leading: const CircleAvatar(
-                                                backgroundImage: NetworkImage(
-                                                    "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.flaticon.es%2Ficono-gratis%2Ftarea_747094&psig=AOvVaw2Wqv9W1gmATowR1Op-ztK_&ust=1680122364693000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCPiKste9__0CFQAAAAAdAAAAABAE")
+                                                backgroundImage: 
+                                                //NetworkImage( "https://photographylife.com/wp-content/uploads/2017/01/What-is-landscape-photography.jpg")
+                                                AssetImage('assets/task.png'),
                                             ),
                                             trailing: const Icon( Icons.arrow_forward_ios_outlined, color: Colors.indigo, ),
                                             onTap: () {
-                                                final game = controller.getUserTaskListByPos(i);
+                                                final game = controller.getUserTaskNameByPos(i);
+                                                controller.curTask.value = controller.getUserTaskByPos(i);
                                                 print( game );
-                                                Get.to(const PlacePage());
+                                                print( controller.curTask );
+                                                Get.to(() => const PlacePage());
                                             },
                                         ), 
                                   );
